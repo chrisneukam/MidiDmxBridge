@@ -1,0 +1,41 @@
+name: Arduino Checks
+
+on: [push, pull_request]
+
+jobs:
+  lint:
+    name: Arduino lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: arduino/arduino-lint-action@v1
+        with:
+          path: ${{github.workspace}}/
+          library-manager: submit
+          compliance: strict
+
+  compile-examples:
+    name: Arduino compile examples
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        fqbn:
+          - arduino:avr:uno
+          - arduino:avr:pro
+          - arduino:avr:leonardo
+          - arduino:avr:mega
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: arduino/compile-sketches@v1
+        with:
+          verbose: true
+          fqbn: ${{ matrix.fqbn }}
+          libraries: |
+            - source-path: ${{github.workspace}}/
+          sketch-paths: |
+            - 'examples/Basic_IO'
+            - 'examples/DMXGain'
+            - 'examples/DMXStaticScene'

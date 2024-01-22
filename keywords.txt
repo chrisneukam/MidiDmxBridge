@@ -1,0 +1,26 @@
+#######################################
+# Syntax Coloring Map MidiDmxBridge
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+MIDI_DMX	KEYWORD1		DATA_TYPE
+vector	KEYWORD1		DATA_TYPE
+ISerialReader	KEYWORD1		DATA_TYPE
+
+DmxRgbChannels	KEYWORD3		RESERVED_WORD
+DmxRgb	KEYWORD3		RESERVED_WORD
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+setStaticScene	KEYWORD2
+setAttenuation	KEYWORD2
+listen	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+kUnityGainValue	LITERAL1		RESERVED_WORD_2
